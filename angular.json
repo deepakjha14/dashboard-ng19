@@ -12,7 +12,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "dashboard-ng19",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -98,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "9e1debe3-d856-4520-b14b-a1d2b3a23aba"
   }
 }
