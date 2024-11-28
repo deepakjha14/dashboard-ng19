@@ -10,4 +10,27 @@ import { HeaderComponent } from "../header/header.component";
 })
 export class AppComponent {
   title = 'dashboard';
+  isMorning: boolean = false;
+  salutations: any = [
+    {
+      id: 1,
+      message: 'Good Morning'
+    },
+    {
+      id: 2,
+      message: 'Good Afternoon'
+    },
+    {
+      id: 3,
+      message: 'Good Evening'
+    },
+    {
+      id: 4,
+      message: 'Good Night'
+    }
+  ];
+
+  morningToggle(): void {
+    this.isMorning = !this.isMorning;
+  }
 }
