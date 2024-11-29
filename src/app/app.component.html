@@ -1,6 +1,11 @@
-<dashboard-ng19-header></dashboard-ng19-header>
+<dashboard-ng19-header [title]="headerName" (salutation)="onSalutation($event)" ></dashboard-ng19-header>
+
 Hello World from Angular 19 -- {{title}}
+
 <button (click)="morningToggle()">Click here</button>
+
+<input [disabled]="isMorning" type="text" />
+
 @if (isMorning) {
     <div>
         Good Morning

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'dashboard-ng19-header',
@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  @Input() title: string|undefined;
+  @Output() salutation = new EventEmitter<string>();
 
+  salutationCall() {
+    this.salutation.emit("salutation");
+  }
 }

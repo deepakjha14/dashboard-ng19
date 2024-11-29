@@ -11,6 +11,7 @@ import { HeaderComponent } from "../header/header.component";
 export class AppComponent {
   title = 'dashboard';
   isMorning: boolean = false;
+  headerName!: string|undefined;
   salutations: any = [
     {
       id: 1,
@@ -31,6 +32,15 @@ export class AppComponent {
   ];
 
   morningToggle(): void {
+    this.headerName = this.isMorning? 'Deepak' : undefined;
     this.isMorning = !this.isMorning;
+  }
+
+  onMouseEnter(): void {
+    alert('Hi');
+  }
+
+  onSalutation(evt: any): void {
+    alert(evt);
   }
 }
