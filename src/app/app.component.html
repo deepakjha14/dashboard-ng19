@@ -1,6 +1,6 @@
 <dashboard-ng19-header [title]="headerName" (salutation)="onSalutation($event)" ></dashboard-ng19-header>
 
-Hello World from Angular 19 -- {{title}}
+<!-- Hello World from Angular 19 -- {{title}}
 
 <button (click)="morningToggle()">Click here</button>
 
@@ -14,10 +14,16 @@ Hello World from Angular 19 -- {{title}}
     <div>
         Good Evening
     </div>
-}
-@for (sal of salutations; track sal.id;) {
+} -->
+
+@for (user of users; track user.id;) {
     <div>
-        <h1>{{sal.message}}</h1>
+        <h1>{{user.name}}</h1>
+        @defer {
+            <img [src]="user.image" />
+        } @loading (minimum 2000ms) {
+            <h1> Loading .... </h1>
+        }
     </div>
 }
 <router-outlet />

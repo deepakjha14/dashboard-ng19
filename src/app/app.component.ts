@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "../header/header.component";
+import * as fakeData from "../../public/sampleResponse.json";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { HeaderComponent } from "../header/header.component";
 })
 export class AppComponent {
   title = 'dashboard';
+  users: any = fakeData?.users;
   isMorning: boolean = false;
   headerName!: string|undefined;
   salutations: any = [
