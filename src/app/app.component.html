@@ -16,7 +16,7 @@
     </div>
 } -->
 
-@for (user of users; track user.id;) {
+<!--@for (user of users; track user.id;) {
     <div>
         <h1>{{user.name}}</h1>
     
@@ -26,11 +26,15 @@
             <img [ngSrc]="user.image" height="100" width="100"/>
         }
 
-        <!-- @defer { -->
-            <!-- <img [src]="user.image" /> -->
-        <!-- } @loading (minimum 2000ms) {
+        @defer { 
+            <img [src]="user.image" />
+         } @loading (minimum 2000ms) {
             <h1> Loading .... </h1>
-        } -->
+        } 
     </div>
-}
+}-->
+<nav>
+    <a routerLink="/home">Home</a>
+    <a routerLink="/about">About</a>
+</nav>
 <router-outlet />
