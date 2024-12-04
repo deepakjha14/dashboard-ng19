@@ -1,1 +1,9 @@
-<p>home works!</p>
+<p>Template Driven Forms</p>
+<form #loginForm="ngForm"> 
+    <input type="text" [(ngModel)]="login.username" name="username"/>
+    <input type="password" [(ngModel)]="login.password" [ngModelOptions]="{standalone: true}"/>
+</form>
+<button
+    (click)="onClick()">
+    Click to submit
+</button>

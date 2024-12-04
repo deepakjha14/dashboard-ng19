@@ -1,1 +1,8 @@
-<p>about works!</p>
+<p>Reactive forms</p>
+<form [formGroup]="studentsDetails">
+    <input type="text" placeholder="name" formControlName="name"/>
+    <input type="text" placeholder="surname" formControlName="surname"/>
+    <input type="text" placeholder="city" formControlName="city"/>
+    <input type="number" placeholder="age" formControlName="age"/>
+</form>
+<button (click)="onClick()" [disabled]="!studentsDetails.valid">Submit Form</button>
