@@ -1,4 +1,8 @@
 <p>Template Driven Forms</p>
+@if (aboutFormData) {
+    <h2>Details from about component is here</h2>
+    {{aboutFormData | json}}
+}
 <form #loginForm="ngForm"> 
     <input type="text" [(ngModel)]="login.username" name="username"/>
     <input type="password" [(ngModel)]="login.password" [ngModelOptions]="{standalone: true}"/>
