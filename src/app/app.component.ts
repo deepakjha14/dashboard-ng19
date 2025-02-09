@@ -1,48 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "../header/header.component";
-import * as fakeData from "../../public/sampleResponse.json";
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterLink, RouterOutlet, HeaderComponent],
+  imports: [SidebarComponent, NavbarComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'dashboard';
-  users: any = fakeData?.users;
-  isMorning: boolean = false;
-  headerName!: string|undefined;
-  salutations: any = [
-    {
-      id: 1,
-      message: 'Good Morning'
-    },
-    {
-      id: 2,
-      message: 'Good Afternoon'
-    },
-    {
-      id: 3,
-      message: 'Good Evening'
-    },
-    {
-      id: 4,
-      message: 'Good Night'
-    }
-  ];
+  title: string = "Dashboard in bootstrap 5";
+  isSidebarOpen: boolean = false;
 
-  morningToggle(): void {
-    this.headerName = this.isMorning? 'Deepak' : undefined;
-    this.isMorning = !this.isMorning;
-  }
-
-  onMouseEnter(): void {
-    alert('Hi');
-  }
-
-  onSalutation(evt: any): void {
-    alert(evt);
+  onSidebarToggle() {
+    this.isSidebarOpen = !this.isSidebarOpen;
   }
 }

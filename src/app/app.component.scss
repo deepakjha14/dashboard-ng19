@@ -1,3 +1,15 @@
-:host {
-    background-color: aqua;
+.top-bar {
+    &__side-bar {
+        position: fixed;
+        top: 56px;
+        height: 100%;
+        width: 250px; // Set your desired width
+        background-color: #000; // Or your desired color
+        transform: translateX(-100%); // Hide it initially
+        transition: transform 0.3s ease-in-out;
+
+        &.open {
+            transform: translateX(0); // Show when open
+        }
+    }
 }
