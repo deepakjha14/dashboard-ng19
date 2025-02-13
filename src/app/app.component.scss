@@ -1,15 +1,45 @@
 .top-bar {
+    grid-area: navbar;
+    
     &__side-bar {
-        position: fixed;
-        top: 56px;
-        height: 100%;
-        width: 250px; // Set your desired width
-        background-color: #000; // Or your desired color
-        transform: translateX(-100%); // Hide it initially
-        transition: transform 0.3s ease-in-out;
-
+        grid-area: sidebar;
+        width: 0;
+        transition: width 0.3s ease;
+        overflow-x: hidden; // Add this to hide overflow content
+        white-space: nowrap; // Add this to prevent text wrapping
+        
         &.open {
-            transform: translateX(0); // Show when open
+            width: 250px;
+        }
+        
+        // Add these styles to handle content visibility
+        .sidebar-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+        
+        &.open .sidebar-content {
+            opacity: 1;
+            visibility: visible;
         }
     }
+
+    &__content-section {
+        grid-area: content;
+        // padding: 8px;
+        transition: margin-left 0.3s ease;
+    }
+}
+
+:host {
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+        "navbar navbar"
+        "sidebar content";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    overflow-x: hidden; // Add this to prevent horizontal scrollbar
 }

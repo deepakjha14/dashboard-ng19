@@ -1,3 +1,5 @@
-<dashboard-ng19-navbar (sidebarToggle)="onSidebarToggle()"></dashboard-ng19-navbar>
+<dashboard-ng19-navbar class="top-bar" (sidebarToggle)="onSidebarToggle()"></dashboard-ng19-navbar>
 <dashboard-ng19-sidebar class="top-bar__side-bar" [class.open]="isSidebarOpen"></dashboard-ng19-sidebar>
-<router-outlet></router-outlet>
+<div class="top-bar__content-section">
+    <router-outlet></router-outlet>
+</div>

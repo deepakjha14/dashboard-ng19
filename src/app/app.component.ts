@@ -11,7 +11,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title: string = "Dashboard in bootstrap 5";
-  isSidebarOpen: boolean = false;
+  isSidebarOpen: boolean = true;
 
   onSidebarToggle() {
     this.isSidebarOpen = !this.isSidebarOpen;
