@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
     "ag-grid-angular": "^33.1.0",
+    "highcharts": "^12.1.2",
+    "highcharts-angular": "^4.0.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
