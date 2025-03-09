@@ -15,4 +15,8 @@ export class NavbarComponent {
     this.toggleSidebar = !this.toggleSidebar;
     this.sidebarToggle.emit(this.toggleSidebar);
   }
+
+  onLogin() {
+    window.location.href = 'http://localhost:4000/auth/login';
+  }
 }
