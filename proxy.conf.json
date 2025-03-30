@@ -1,0 +1,22 @@
+{
+    "/auth/token" : {
+        "target": "https://decskwgb8e.execute-api.ap-south-1.amazonaws.com",
+        "secure": false
+    },
+    "/auth/charts" : {
+        "target": "https://decskwgb8e.execute-api.ap-south-1.amazonaws.com",
+        "secure": false
+    },
+    "/auth/charts-data" : {
+        "target": "https://decskwgb8e.execute-api.ap-south-1.amazonaws.com",
+        "secure": false
+    },
+    "/auth/get-students" : {
+        "target": "https://decskwgb8e.execute-api.ap-south-1.amazonaws.com",
+        "secure": false
+    },
+    "/auth/save-students" : {
+        "target": "https://decskwgb8e.execute-api.ap-south-1.amazonaws.com",
+        "secure": false
+    }
+}

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HighchartsChartModule } from "highcharts-angular";
 import Highcharts from 'highcharts';
+import { SharedService } from '../../shared/shared.serice';
 
 @Component({
   selector: 'dashboard-ng19-charts',
@@ -8,7 +9,7 @@ import Highcharts from 'highcharts';
   templateUrl: './charts.component.html',
   styleUrl: './charts.component.scss'
 })
-export class ChartsComponent {
+export class ChartsComponent implements OnInit{
   // Define an area chart using highchart 
   Highcharts: typeof Highcharts = Highcharts;
   chartOptions: Highcharts.Options = {
@@ -102,4 +103,43 @@ export class ChartsComponent {
       enabled: false
     }
   };
+
+  constructor(private sharedService: SharedService) {}
+  
+  ngOnInit(): void {
+    this.sharedService.getChartsData().subscribe({
+      next: (data: any) => {
+        this.parseData(data);
+        // this.chartOptions = data;
+      },
+      error: (error: any) => {
+        console.error('Error fetching data:', error);
+      }
+    });
+  }
+
+  parseData(data: any) {
+    const months: any = [];
+    const values: any = [];
+    data.forEach(
+      (item: any)  => {
+        months.push(item.name);
+        values.push(item.count);
+      }
+    );
+
+    this.chartOptions.xAxis = {
+      categories: months
+    };
+
+    this.chartOptions.series = [{
+      name: 'Series 1',
+      type: 'area',
+      data: values,
+      color: '#7cb5ec',
+      fillOpacity: 0.3
+    }];
+
+    this.chartOptions = JSON.parse(JSON.stringify(this.chartOptions));
+  }
 }

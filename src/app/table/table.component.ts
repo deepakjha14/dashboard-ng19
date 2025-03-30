@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { ColDef, GridApi, ModuleRegistry, AllCommunityModule, provideGlobalGridOptions } from 'ag-grid-community';
+import { SharedService } from '../../shared/shared.serice';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 // Register all community features
 ModuleRegistry.registerModules([AllCommunityModule]);
@@ -10,11 +12,11 @@ provideGlobalGridOptions({ theme: "legacy"});
 
 @Component({
   selector: 'dashboard-ng19-table',
-  imports: [ AgGridAngular ],
+  imports: [ AgGridAngular, ReactiveFormsModule ],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
-export class TableComponent {
+export class TableComponent implements OnInit {
   rowData: any = [
     {
       name: 'John Doe',
@@ -96,8 +98,77 @@ export class TableComponent {
       valueFormatter: (params: any) => new Date(params.value).toLocaleDateString()
     }
   ];
+  
+  studentsForm: FormGroup;
+
+  get nameControl(): FormControl {
+    return this.studentsForm.get('name') as FormControl;
+  }
+
+  get ageControl(): FormControl {
+    return this.studentsForm.get('age') as FormControl;
+  }
+
+  get countryControl(): FormControl {
+    return this.studentsForm.get('country') as FormControl;
+  }
+
+  get emailControl(): FormControl {
+    return this.studentsForm.get('email') as FormControl;
+  }
+
+  get salaryControl(): FormControl {
+    return this.studentsForm.get('salary') as FormControl;
+  }
+
+  get departmentControl(): FormControl {
+    return this.studentsForm.get('department') as FormControl;
+  }
+
+  get statusControl(): FormControl {
+    return this.studentsForm.get('status') as FormControl;
+  }
+
+  get joinDatControl(): FormControl {
+    return this.studentsForm.get('joinDate') as FormControl;
+  }
+
+  constructor(private sharedService: SharedService, private fb: FormBuilder) {
+    this.studentsForm = this.fb.group({
+      name: ['', [ Validators.required ]],
+      age: ['', [ Validators.required, Validators.min(1) ]],
+      country: ['', [ Validators.required]],
+      email: ['', [ Validators.required, Validators.email ]],
+      salary: ['', [ Validators.required, Validators.min(1000) ]],
+      department: ['', [ Validators.required ]],
+      status: ['', [ Validators.required ]],
+      joinDate: ['', [ Validators.required ]]
+    });
+  }
+
+  ngOnInit(): void {
+      this.sharedService.getStudents().subscribe({
+        next: (res: any) => {
+          this.rowData = res;
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      });
+  }
 
   onGridReady(evt: any) {
     this.gridApi = evt.gridApi;
+  }
+
+  submitForm() {
+    this.sharedService.saveData({...this.studentsForm.value, " name": this.nameControl.value }).subscribe({
+      next: (res: any) => {
+        console.log(res);
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    });
   }
 }

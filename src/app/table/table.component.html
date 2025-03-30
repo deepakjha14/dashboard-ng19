@@ -8,3 +8,39 @@
     [animateRows]="true"
     (gridReady)="onGridReady($event)">
 </ag-grid-angular>
+
+<div style="max-width: 500px; margin-left: auto; margin-right: auto;">
+    <div>
+        Name:
+        <input class="form-control" [formControl]="nameControl"/>
+    </div>
+    <div>
+        Age:
+        <input class="form-control" [formControl]="ageControl"/> 
+    </div>
+    <div>
+        Country:
+        <input class="form-control" [formControl]="countryControl"/>
+    </div>
+    <div>
+        Email:
+        <input class="form-control" [formControl]="emailControl"/>
+    </div>
+    <div>
+        Salary:
+        <input class="form-control" [formControl]="salaryControl"/>
+    </div>
+    <div>
+        Department:
+        <input class="form-control" [formControl]="departmentControl"/>
+    </div>
+    <div>
+        Status:
+        <input class="form-control" [formControl]="statusControl"/>
+    </div>
+    <div>
+        Join Date: 
+        <input class="form-control" [formControl]="joinDatControl" type="date"/>
+    </div>
+    <button style="margin-top: 16px;" class="btn btn-primary" (click)="submitForm()" [disabled]="studentsForm.invalid"> Submit </button>
+</div>
